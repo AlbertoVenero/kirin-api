@@ -19,16 +19,16 @@ export class EstablecimientosController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.establecimientosService.findOne(+id);
+    return this.establecimientosService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEstablecimientoDto: UpdateEstablecimientoDto) {
-    return this.establecimientosService.update(+id, updateEstablecimientoDto);
+    return this.establecimientosService.update(id, updateEstablecimientoDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.establecimientosService.remove(+id);
+    return this.establecimientosService.remove(id);
   }
 }
