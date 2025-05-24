@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEstablecimientoDto } from './dto/create-establecimiento.dto';
-import { UpdateEstablecimientoDto } from './dto/update-establecimiento.dto';
+
 import { Repository } from 'typeorm';
-import { Establecimiento } from './entities/establecimiento.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { EstablecimientoImage } from './entities/establecimiento-images.entity';
+import { Establecimiento, EstablecimientoImage } from './entities/barril-entities';
+import { CreateEstablecimientoDto, UpdateEstablecimientoDto } from './dto/barril-dto';
+
 
 @Injectable()
 export class EstablecimientosService {

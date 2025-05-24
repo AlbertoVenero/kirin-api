@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { EstablecimientosService } from './establecimientos.service';
-import { CreateEstablecimientoDto } from './dto/create-establecimiento.dto';
-import { UpdateEstablecimientoDto } from './dto/update-establecimiento.dto';
+import { CreateEstablecimientoDto, UpdateEstablecimientoDto } from './dto/barril-dto';
+
 
 @Controller('establecimientos')
 export class EstablecimientosController {
