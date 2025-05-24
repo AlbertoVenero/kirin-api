@@ -6,15 +6,15 @@ export class CreateEstablecimientoDto {
     @IsNotEmpty()
     @MinLength(2)
     estab_id: string; // Código numérico como string
-  
+
     @IsString()
     @IsNotEmpty()
     estab_name: string;
-  
+
     @IsString()
     @IsNotEmpty()
     estab_direc: string;
-  
+
     @IsString()
     @IsNotEmpty()
     mpps_catast: string;

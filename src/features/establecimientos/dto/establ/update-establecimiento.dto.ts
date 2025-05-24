@@ -4,15 +4,14 @@ import { IsArray, IsBoolean, IsIn, IsLatitude, IsLongitude, IsNotEmpty, IsOption
 
 export class UpdateEstablecimientoDto {
 
-    
         @IsString()
         @IsOptional()
         readonly estab_name: string;
-      
+        
         @IsString()
         @IsOptional()
         readonly estab_direc: string;
-      
+
         @IsString()
         @IsOptional()
         readonly mpps_catast: string;

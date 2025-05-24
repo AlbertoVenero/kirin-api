@@ -1,7 +1,7 @@
 
 import { Column, Entity, Generated, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { EstablecimientoImage } from "./establecimiento-images.entity";
-import { IsIn, IsLatitude, IsLongitude } from "class-validator";
+
 
 @Entity({name: 'establecimiento'})
 export class Establecimiento {
