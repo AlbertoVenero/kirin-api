@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsOptional, IsString, IsArray } from "class-validator";
 
 
 export class CreateTipoEstablDto { 
@@ -15,8 +15,9 @@ export class CreateTipoEstablDto {
     @IsString()
     descripcion: string;
 
-    @IsString()
+    @IsString({ each: true })
+    @IsArray()
     @IsOptional()
-    tipo_establ_cod: string;
+    tipo_establ_cod?: string[];
 
 }

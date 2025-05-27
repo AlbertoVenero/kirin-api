@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsArray, IsOptional, IsString } from "class-validator";
 
 
 export class CreateDependenciaDto { 
@@ -15,8 +15,9 @@ export class CreateDependenciaDto {
     @IsString()
     descripcion: string;
 
-    @IsString()
+    @IsString({ each: true })
+    @IsArray()
     @IsOptional()
-    depend_cod: string;
+    depend_cod?: string[];
 
 }

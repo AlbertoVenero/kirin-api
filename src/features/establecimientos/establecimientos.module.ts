@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { EstablecimientosService } from './establecimientos.service';
-import { EstablecimientosController } from './establecimientos.controller';
+import { EstablecimientosService } from './services/establecimientos.service';
+import { EstablecimientosController } from './controllers/establecimientos.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DependAdmin, Establecimiento, EstablecimientoImage, TipoDependAsoc, TipoEstabl, TipoEstablAsoc } from './entities/barril-entities';
 

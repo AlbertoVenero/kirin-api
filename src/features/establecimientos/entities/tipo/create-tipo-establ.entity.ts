@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { TipoEstablAsoc } from './create-establ-asoc';
+import { TipoEstablAsoc } from './create-establ-asoc.entity';
 
 @Entity({name: 'tipoestabl'})
 export class TipoEstabl { 
@@ -16,12 +16,13 @@ export class TipoEstabl {
     @Column()
     descripcion: string;
 
-    @OneToMany(() => TipoEstablAsoc, (tipoEstablAsoc) => tipoEstablAsoc.tipoasoc, {
+    @OneToMany(
+        () => TipoEstablAsoc, 
+        (tipoEstablAsoc) => tipoEstablAsoc.tipo_asoc, {
         cascade: true,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
-        orphanedRowAction: 'delete',
     })
-    tipo_establ_cod: TipoEstablAsoc[];
+    tipo_establ_cod?: TipoEstablAsoc[]; // Array de servic_id (Prestservic)
 
 }

@@ -25,28 +25,28 @@ export class Establecimiento {
     @Column('text')
     estab_coord: string;
 
-    @Column('text')
+    @Column({ type: 'text', nullable: true} )
     utm_y: string;
 
-    @Column('text')
+    @Column({ type: 'text', nullable: true})
     utm_x: string;
 
-    @Column('text')
+    @Column({ type: 'text', nullable: true})
     altitud: string;
 
     @Column({ type: 'text', nullable: true })
     tipo_estab: string; // Código del tipo de establecimiento
 
-    @Column('text')
+    @Column({ type: 'text', nullable: true})
     nivel_estab: string;
 
-    @Column()
+    @Column({ nullable: true })
     repo_admin: boolean;
     
-    @Column()
+    @Column({ nullable: true })
     isActive: boolean;
 
-    @Column()
+    @Column({ nullable: true })
     cond_estab: boolean; // Condición del establecimiento
     
     @Column({ type: 'text', nullable: true })
@@ -55,10 +55,10 @@ export class Establecimiento {
     @Column({ type: 'text', nullable: true })
     telefono: string; // Número de teléfono del establecimiento
     
-    @Column('text')
+    @Column({ type: 'text', nullable: true })
     estab_serv: string[]; // Array de servic_id (Prestservic)
 
-    @Column('text')
+    @Column({ type: 'text', nullable: true })
     cod_ubigeo: string;
     
     //imagenes del centro

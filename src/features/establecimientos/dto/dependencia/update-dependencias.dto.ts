@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsArray, IsOptional, IsString } from "class-validator";
 
 
 export class UpdateDependenciaDto { 
@@ -16,6 +16,7 @@ export class UpdateDependenciaDto {
     readonly descripcion: string;
     
     @IsString()
+    @IsArray()
     @IsOptional()
     readonly depend_cod?: string[];
 

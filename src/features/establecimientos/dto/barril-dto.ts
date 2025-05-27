@@ -4,7 +4,7 @@ export { UpdateEstablecimientoDto } from "./establ/update-establecimiento.dto";
 
 //TipoEstablecimiento
 export { CreateTipoEstablDto } from "./tipo/create-tipo-establ.dto";
-export { UpdateTipoEstablDto } from "./tipo/update-tipo_establ.dto";
+export { UpdateTipoEstablDto } from "./tipo/update-tipo-establ.dto";
 
 //Dependencia Administrativa
 export { CreateDependenciaDto } from "./dependencia/create-dependencias.dto";

@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { TipoDependAsoc } from './create-depend-asoc';
+import { TipoDependAsoc } from './create-depend-asoc.entity';
 
 @Entity({name: 'dependadmin'})
 export class DependAdmin { 
@@ -16,7 +16,9 @@ export class DependAdmin {
     @Column()
     descripcion: string;
 
-    @OneToMany(() => TipoDependAsoc, (tipoDependAsoc) => tipoDependAsoc.tipoasoc, {
+    @OneToMany(
+        () => TipoDependAsoc, 
+        (tipoDependAsoc) => tipoDependAsoc.tipoasoc, {
         cascade: true,
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
