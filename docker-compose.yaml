@@ -1,15 +1,43 @@
-version: '3'
 
+version: '3.8' # Especifica la versión de Docker Compose
 
 services:
-  db:
-    image: postgres:14.3
-    restart: always
-    ports:
-      - "5432:5432"
+  # Servicio de la base de datos PostgreSQL
+  postgres_db:
+    image: postgres:14.3-alpine # Imagen oficial de PostgreSQL, versión 14.3 (alpine es más ligera)
+    container_name: medkirindb # Nombre del contenedor para fácil referencia
+    restart: always # Reinicia el contenedor si se detiene, a menos que se detenga manualmente
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    container_name: medkirindb
+      # Credenciales para la base de datos (¡Cámbialas en producción!)
+      #POSTGRES_USER: tu_usuario_db # Reemplaza con tu nombre de usuario deseado
+      POSTGRES_PASSWORD: ${DB_PASSWORD} # Reemplaza con tu contraseña deseada
+      POSTGRES_DB: ${DB_NAME} # Reemplaza con el nombre de tu base de datos
+      
+      # Configuración de locale y encoding
+      # POSTGRES_INITDB_ARGS se usa para pasar argumentos adicionales a initdb
+      # --encoding=UTF8: Establece la codificación por defecto de la base de datos a UTF-8.
+      # --locale=es_VE.UTF-8: Establece el locale para ordenación, formato de fechas/números, etc.
+      #   Es importante que el locale esté disponible en la imagen base.
+      #   La imagen `postgres` generalmente incluye muchos locales, pero si tienes problemas,
+      #   podrías necesitar una imagen con más locales o construir una personalizada.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=es_VE.UTF-8 --lc-ctype=es_VE.UTF-8 --locale=es_VE.UTF-8"
+      LANG: es_VE.UTF-8 # También establece el LANG para el entorno del contenedor
+      # PGDATA es la ubicación donde PostgreSQL almacena sus datos dentro del contenedor
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      # Mapea el puerto 5432 del host al puerto 5432 del contenedor
+      # Puedes cambiar el puerto del host si el 5432 ya está en uso (ej. "5433:5432")
+      - "5432:5432"
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      # Volumen nombrado para persistir los datos de la base de datos
+      # Incluso si el contenedor se elimina, los datos permanecerán
+      - postgres_data:/var/lib/postgresql/data/pgdata
+    healthcheck: # Opcional: verifica que la base de datos esté lista
+      test: ["CMD-SHELL", "pg_isready -U tu_usuario_db -d tu_nombre_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Definición de volúmenes nombrados
+volumes:
+  postgres_data: {} # El driver por defecto es 'local'

@@ -1,4 +1,29 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateFuncionarioDto } from './create-funcionario.dto';
+import { IsBoolean, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
-export class UpdateFuncionarioDto extends PartialType(CreateFuncionarioDto) {}
+export class UpdateFuncionarioDto {
+
+    @IsString()
+    @IsOptional()
+    funcname?: string;
+
+    @IsString()
+    @IsOptional()
+    funcaped?: string;
+    
+    @IsString()
+    @IsOptional()
+    functipo?: string;
+    
+    @IsString()
+    @IsOptional()
+    funcpass?: string;
+
+    @IsString()
+    @IsOptional()
+    estab_id?: string;
+    
+    @IsBoolean()
+    @IsOptional()
+    funcactive?: boolean;
+
+}

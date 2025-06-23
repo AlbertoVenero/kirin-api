@@ -5,9 +5,10 @@ import { HcbiModule } from './features/hcbi/hcbi.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-import { EstablecimientosModule } from './features/establecimientos/establecimientos.module';
-import { ServicesCatalogModule } from './features/services-catalog/services-catalog.module';
-import { WorkScheduleModule } from './features/work-schedule/work-schedule.module';
+
+import { EstablecimientosModule } from './features/infreaestructura/establecimientos.module';
+import { UbicacionModule } from './features/ubicacion/ubicacion.module';
+
 
 
 @Module({
@@ -27,8 +28,7 @@ import { WorkScheduleModule } from './features/work-schedule/work-schedule.modul
     FuncionarioModule, 
     HcbiModule,
     EstablecimientosModule,
-    ServicesCatalogModule,
-    WorkScheduleModule
+    UbicacionModule,
   ],
   controllers: [],
   providers: [],
