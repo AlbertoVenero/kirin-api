@@ -17,6 +17,6 @@ export class Ciudad {
   @ManyToOne(() => Parroquia, (parroquia) => parroquia.ciudades)
   parroquia: Parroquia;
 
-  @Column({ type: 'varchar', length: 60, name: 'nombre' })
+  @Column({ type: 'varchar', name: 'nombre' })
   nombre: string;
 }

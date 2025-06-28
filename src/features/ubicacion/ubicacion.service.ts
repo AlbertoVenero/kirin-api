@@ -5,6 +5,10 @@ import { Estado } from './entities/estados.entity';
 import { Municipio } from './entities/municipios.entity';
 import { Ciudad } from './entities/ciudades.entity';
 import { Parroquia } from './entities/parroquias.entity';
+import { EstadoDto, SearchCiudadDto, SearchParroquiaDto,} from './dtos/index';
+import { SearchMunicipioDto } from './dtos/municipio/municipio.dto';
+
+
 
 @Injectable()
 export class UbicacionService {
@@ -19,27 +23,52 @@ export class UbicacionService {
         private parroquiaRepository: Repository<Parroquia>,
     ) { }
 
-    async findAllEstados(): Promise<Estado[]> {
-        return this.estadoRepository.find({ relations: ['municipios'] });
+    async findAllEstados(): Promise<EstadoDto[]> {
+        const estados = await this.estadoRepository.find();
+        return estados.map(e => ({
+            id: e.id,
+            nombre: e.nombre,
+        }));
     }
 
-    async findMunicipiosByEstado(estadoId: string): Promise<Municipio[]> {
-        return this.municipioRepository.find({
+    async findMunicipiosByEstado(estadoId: string): Promise<SearchMunicipioDto[]> {
+        const municipios = await this.municipioRepository.find({
             where: { estado: { id: estadoId } },
-            relations: ['ciudades', 'parroquias'],
         });
+        return municipios.map(m => ({
+            id: m.id,
+            nombre: m.nombre,
+        }));
     }
 
-    async findCiudadesByMunicipio(municipioId: string): Promise<Ciudad[]> {
-        return this.ciudadRepository.find({
+    async findParroquiasByMunicipio(municipioId: string): Promise<SearchParroquiaDto[]> {
+        const parroquias = await this.parroquiaRepository.find({
             where: { municipio: { id: municipioId } },
         });
-    }
-    async findParroquiasByMunicipio(municipioId: string): Promise<Parroquia[]> {
-        return this.parroquiaRepository.find({
-            where: { municipio: { id: municipioId } },
-        });
+        return parroquias.map(p => ({
+            id: p.id,
+            nombre: p.nombre,
+        }));
     }
 
+    async findCiudadesByMunicipio(municipioId: string): Promise<SearchCiudadDto[]> {
+        const ciudades = await this.ciudadRepository.find({
+            where: { municipio: { id: municipioId } },
+        });
+        return ciudades.map(c => ({
+            id: c.id,
+            nombre: c.nombre,
+        }));
+    }
+
+    async findCiudadesByParroquia(parroquiaId: string): Promise<SearchCiudadDto[]> {
+        const ciudades = await this.ciudadRepository.find({
+            where: { parroquia: { id: parroquiaId } },
+        });
+        return ciudades.map(c => ({
+            id: c.id,
+            nombre: c.nombre,
+        }));
+    }
     // Métodos similares para parroquias y otras consultas
 }

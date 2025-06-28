@@ -5,10 +5,10 @@ import { HcbiModule } from './features/hcbi/hcbi.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
-
 import { EstablecimientosModule } from './features/infreaestructura/establecimientos.module';
 import { UbicacionModule } from './features/ubicacion/ubicacion.module';
-
+import { EtniaModule } from './features/etnia/etnia.module';
+import { NacionModule } from './features/nacion/nacion.module';
 
 
 @Module({
@@ -29,6 +29,8 @@ import { UbicacionModule } from './features/ubicacion/ubicacion.module';
     HcbiModule,
     EstablecimientosModule,
     UbicacionModule,
+    EtniaModule,
+    NacionModule
   ],
   controllers: [],
   providers: [],

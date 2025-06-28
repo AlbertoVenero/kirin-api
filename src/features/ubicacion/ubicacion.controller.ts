@@ -1,25 +1,38 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { UbicacionService } from './ubicacion.service';
-import { SeedService } from './seed.service';
+
 
 
 @Controller('ubicacion')
 export class UbicacionController {
     constructor(
         private readonly ubicacionService: UbicacionService,
-        private readonly seedService: SeedService
+        
     ) { }
 
-
-    @Post('seed')
-    async seedData() {
-        return this.seedService.seedData();
-    }
 
     @Get('estados')
     async getEstados() {
         return this.ubicacionService.findAllEstados();
     }
 
-    // Endpoints similares para municipios/ciudades/parroquias
+    @Get('municipios/:estadoId')
+    async getMunicipiosByEstado(@Param('estadoId') estadoId: string) {
+        return this.ubicacionService.findMunicipiosByEstado(estadoId);
+    }
+
+    @Get('parroquias/:municipioId')
+    async getParroquiasByMunicipio(@Param('municipioId') municipioId: string) {
+        return this.ubicacionService.findParroquiasByMunicipio(municipioId);
+    }
+
+    @Get('ciudades/municipio/:municipioId')
+    async getCiudadesByMunicipio(@Param('municipioId') municipioId: string) {
+        return this.ubicacionService.findCiudadesByMunicipio(municipioId);
+    }
+
+    @Get('ciudades/:parroquiaId')
+    async getCiudadesByParroquia(@Param('parroquiaId') parroquiaId: string) {
+        return this.ubicacionService.findCiudadesByParroquia(parroquiaId);
+    }
 }
