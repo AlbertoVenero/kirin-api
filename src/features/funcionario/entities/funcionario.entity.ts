@@ -1,4 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { FuncAcceso } from "./func_acceso.entity";
+import { FuncTurnos } from "./func_turnos.entity";
 
 @Entity()
 export class Funcionario {
@@ -8,12 +10,12 @@ export class Funcionario {
     @PrimaryColumn({ type: 'text', unique: true })
     funcced: string;
 
-    @Column({ type: 'text'})
+    @Column({ type: 'text' })
     funcname: string;
 
     @Column({ type: 'text' })
     funcaped: string;
-    
+
     @Column({ type: 'text' })
     functipo: string;
 
@@ -31,10 +33,14 @@ export class Funcionario {
 
     @Column({ type: 'date' })
     fecha_asig_stab: Date;
-    
-    @Column({type: 'bool', default: true})
+
+    @Column({ type: 'bool', default: true })
     funcactive: boolean;
 
-    // @ManyToOne(() => Funcionario)
-    // funcionario: Funcionario;
+    @OneToOne(() => FuncAcceso, (funcAcceso) => funcAcceso.funcionario)
+    funcAcceso: FuncAcceso;
+
+    @OneToMany(() => FuncTurnos, (funcTurnos) => funcTurnos.funcionario)
+    funcTurn: FuncTurnos[];
+
 }

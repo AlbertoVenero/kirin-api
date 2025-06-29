@@ -14,5 +14,5 @@ export class FuncAsignDto {
 }
 
 export class FuncAsignResponseDto extends FuncAsignDto {
-    funcionarios?: Array<{ func_id: string }>; // Relación simplificada
+    funcionarios?: Array<{ funcced: string }>; // Relación simplificada
 }

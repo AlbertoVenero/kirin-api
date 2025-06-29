@@ -16,7 +16,7 @@ export class FuncTurnos {
     @Column('int')
     estab_id: number;
 
-    @ManyToOne(() => Funcionario, (func) => func.id) // Relación por UUID
+    @ManyToOne(() => Funcionario, (func) => func.funcced) // Relación por UUID
     funcionario: Funcionario;
 }
     

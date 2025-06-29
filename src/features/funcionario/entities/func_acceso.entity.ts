@@ -16,6 +16,6 @@ export class FuncAcceso {
     funclegal: boolean;
 
     @OneToOne(() => Funcionario)
-    @JoinColumn({ name: 'func_id' }) // Relación con UUID del funcionario
+    @JoinColumn({ name: 'funcced' }) 
     funcionario: Funcionario;
 }

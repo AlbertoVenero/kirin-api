@@ -1,7 +1,4 @@
-import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Establecimiento } from "../../establecimiento/entities/establecimiento.entity";
-
-
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
@@ -9,12 +6,10 @@ export class EstablecimientoServicio {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @ManyToOne(() => Establecimiento, est => est.estab_serv)
-    establecimiento: Establecimiento;
+    @Column()
+    idServ: string;
 
-    //  @ManyToOne(() => ServiceCatalogItem, svc => svc.establecimientosConServicio)
-    //  servicio: ServiceCatalogItem;
+    @Column()
+    name: string;
 
-    // Otros campos si son necesarios para la relación, e.g., activo, fecha_asignacion
 }
-// Actualizar Establecimiento y ServiceCatalogItem con las relaciones OneToMany correspondientes.

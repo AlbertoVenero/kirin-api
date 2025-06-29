@@ -22,5 +22,5 @@ export class FuncAccesoResponseDto {
     funcservice: string[];
     funchcbi: boolean;
     funclegal: boolean;
-    funcionario: { func_id: string }; // Muestra el UUID
+    funcionario: { funcced: string }; // Muestra el UUID
 }

@@ -1,6 +1,4 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from '@nestjs/common';
-
-
 import { EstablecimientosService } from './establecimientos.service';
 import { CreateEstablecimientoDto } from './dtos/create-establecimiento.dto';
 import { UpdateEstablecimientoDto } from './dtos/update-establecimiento.dto';

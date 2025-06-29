@@ -4,7 +4,7 @@ import { Funcionario } from "./funcionario.entity";
 
 @Entity()
 export class FuncAsign {
-    @PrimaryColumn()
+    @PrimaryColumn({unique: true})
     asig_id: string;
 
     @Column()
@@ -16,6 +16,6 @@ export class FuncAsign {
     @Column()
     fecha_asig_fin : Date;
 
-    @OneToMany(() => Funcionario, (func) => func.id)
+    @OneToMany(() => Funcionario, (func) => func.funcced)
     funcionario: Funcionario[];
 }

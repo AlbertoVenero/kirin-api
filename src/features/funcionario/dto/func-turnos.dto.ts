@@ -24,5 +24,5 @@ export class FuncTurnosResponseDto {
     funcfguard: Date[];
     functguard: string;
     estab_id: number;
-    funcionario: { func_id: string }; // Muestra el UUID
+    funcionario: { funcced: string }; // Muestra el UUID
 }
